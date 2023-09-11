@@ -1,26 +1,28 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
   TextInput,
   TouchableOpacity,
   Image,
-  FlatList,
+  FlatList
 } from "react-native";
+
 import { useRouter } from "expo-router";
 
-import styles from "./welcome.style";
-import { icons, SIZES } from "../../../constants";
+import styles from './welcome.style'
+import { icons, SIZES } from '../../../constants'
 
-const jobTypes = ["Full-time", "Part-time", "Contractor"];
+const Welcome = () => {
+  const router = useRouter()
 
-const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
-  const router = useRouter();
-  const [activeJobType, setActiveJobType] = useState("Full-time");
-
+  useRouteNode
   return (
     <View >
-      <Text>Welcome </Text>
+      <View style={styles.container}>
+        <Text style={styles.userName}>Hello William </Text>
+        <Text style={styles.welcomeMessage}>Find the perfect job</Text>
+      </View>
     </View>
   );
 };
