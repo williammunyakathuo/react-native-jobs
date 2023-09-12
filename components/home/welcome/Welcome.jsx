@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   View,
   Text,
@@ -16,7 +16,7 @@ import { icons, SIZES } from '../../../constants'
 const Welcome = () => {
   const router = useRouter()
 
-  useRouteNode
+ 
   return (
     <View >
       <View style={styles.container}>
