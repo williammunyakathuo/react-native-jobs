@@ -13,13 +13,13 @@ import { useCallback, useState } from "react"
 import useFetch from "../../hook/useFetch"
 import { COLORS, SIZES, icons } from "../../constants"
 
-
-
+const tabs = ["About", "Qualifications", "Responsibilities"]
 
 const Jobdetails = () => {
   const params = useSearchParams()
   const router = useRouter()
   const [refreshing, isRefreshing] = useState(false)
+  const [activeTab, setActiveTab] = useState(tabs[0])
 
   const { data, isLoading, error, refetch } = useFetch('job-details', {
     job_id: params.id
@@ -27,6 +27,25 @@ const Jobdetails = () => {
 
   const onRefresh = () => {
 
+  }
+
+  const displyTabContent = () => {
+    switch (activeTab) {
+      case "About":
+        return 
+
+        break;
+      case "Qualifications":
+        return <Specifics 
+        title= "Qualifications"
+        points={data[0].job_highlights?.qualifications ?? ["N/A"]}
+      />
+        break;
+      case "Responsibilities":
+
+        break;
+
+    }
   }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -76,15 +95,20 @@ const Jobdetails = () => {
                   companyName={data[0].employer_name}
                   location={data[0].job_country}
                 />
-                <JobTabs />
+                <JobTabs
+                  tabs={tabs}
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
+                />
+                { displyTabContent()}
               </View>
-               
+
             )
           }
 
         </ScrollView>
       </>
-         
+
 
     </SafeAreaView>
   )
